@@ -11,15 +11,15 @@
 
 # 2. lock简介 #
 我们下来看concurent包下的lock子包。锁是用来控制多个线程访问共享资源的方式，一般来说，一个锁能够防止多个线程同时访问共享资源。在Lock接口出现之前，java程序主要是靠synchronized关键字实现锁功能的，而java SE5之后，并发包中增加了lock接口，它提供了与synchronized一样的锁功能。**虽然它失去了像synchronize关键字隐式加锁解锁的便捷性，但是却拥有了锁获取和释放的可操作性，可中断的获取锁以及超时获取锁等多种synchronized关键字所不具备的同步特性。**通常使用显示使用lock的形式如下：
-
-	Lock lock = new ReentrantLock();
-	lock.lock();
-	try{
-		.......
-	}finally{
-		lock.unlock();
-	}
-
+```java
+Lock lock = new ReentrantLock();
+lock.lock();
+try{
+	.......
+}finally{
+	lock.unlock();
+}
+```
 需要注意的是**synchronized同步块执行完成或者遇到异常是锁会自动释放，而lock必须调用unlock()方法释放锁，因此在finally块中释放锁**。
 
 ## 2.1 Lock接口API ##
@@ -34,37 +34,37 @@ Condition newCondition();//获取与lock绑定的等待通知组件，当前线�
 ```
 上面是lock接口下的五个方法，也只是从源码中英译中翻译了一遍，感兴趣的可以自己的去看看。那么在locks包下有哪些类实现了该接口了？先从最熟悉的ReentrantLock说起。
 ```java
-public class ReentrantLock implements **Lock**, java.io.Serializable
+public class ReentrantLock implements Lock, java.io.Serializable
 ```
 很显然ReentrantLock实现了lock接口，接下来我们来仔细研究一下它是怎样实现的。当你查看源码时你会惊讶的发现ReentrantLock并没有多少代码，另外有一个很明显的特点是：**基本上所有的方法的实现实际上都是调用了其静态内存类`Sync`中的方法，而Sync类继承了`AbstractQueuedSynchronizer（AQS）`**。可以看出要想理解ReentrantLock关键核心在于对队列同步器AbstractQueuedSynchronizer（简称同步器）的理解。
 
 ## 2.2 初识AQS(AbstractQueuedSynchronizer) ##
 
 关于AQS在源码中有十分具体的解释：
-```java
-Provides a framework for implementing blocking locks and related
-synchronizers (semaphores, events, etc) that rely on
-first-in-first-out (FIFO) wait queues.  This class is designed to
-be a useful basis for most kinds of synchronizers that rely on a
-single atomic {@code int} value to represent state. Subclasses
-must define the protected methods that change this state, and which
-define what that state means in terms of this object being acquired
-or released.  Given these, the other methods in this class carry
-out all queuing and blocking mechanics. Subclasses can maintain
-other state fields, but only the atomically updated {@code int}
-value manipulated using methods {@link #getState}, {@link
-#setState} and {@link #compareAndSetState} is tracked with respect
-to synchronization.
 
-<p>Subclasses should be defined as non-public internal helper
-classes that are used to implement the synchronization properties
-of their enclosing class.  Class
-{@code AbstractQueuedSynchronizer} does not implement any
-synchronization interface.  Instead it defines methods such as
-{@link #acquireInterruptibly} that can be invoked as
-appropriate by concrete locks and related synchronizers to
-implement their public methods.
-```
+	Provides a framework for implementing blocking locks and related
+	synchronizers (semaphores, events, etc) that rely on
+	first-in-first-out (FIFO) wait queues.  This class is designed to
+	be a useful basis for most kinds of synchronizers that rely on a
+	single atomic {@code int} value to represent state. Subclasses
+	must define the protected methods that change this state, and which
+	define what that state means in terms of this object being acquired
+	or released.  Given these, the other methods in this class carry
+	out all queuing and blocking mechanics. Subclasses can maintain
+	other state fields, but only the atomically updated {@code int}
+	value manipulated using methods {@link #getState}, {@link
+	#setState} and {@link #compareAndSetState} is tracked with respect
+	to synchronization.
+
+	<p>Subclasses should be defined as non-public internal helper
+	classes that are used to implement the synchronization properties
+	of their enclosing class.  Class
+	{@code AbstractQueuedSynchronizer} does not implement any
+	synchronization interface.  Instead it defines methods such as
+	{@link #acquireInterruptibly} that can be invoked as
+	appropriate by concrete locks and related synchronizers to
+	implement their public methods.
+
 同步器是用来构建锁和其他同步组件的基础框架，它的实现主要依赖一个int成员变量来表示同步状态以及通过一个FIFO队列构成等待队列。它的**子类必须重写AQS的几个protected修饰的用来改变同步状态的方法**，其他方法主要是实现了排队和阻塞机制。**状态的更新使用getState,setState以及compareAndSetState这三个方法**。
 
 子类被**推荐定义为自定义同步组件的静态内部类**，同步器自身没有实现任何同步接口，它仅仅是定义了若干同步状态的获取和释放方法来供自定义同步组件的使用，同步器既支持独占式获取同步状态，也可以支持共享式获取同步状态，这样就可以方便的实现不同类型的同步组件。
