@@ -36,13 +36,14 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="copyright.profiles" />
@@ -59,13 +60,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Signleton">
-    <configuration name="CASCounter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.edu.seu.wh.trend.concurrent.synchronizedpack.CASCounter" />
+  <component name="RunManager" selected="Application.ConditionAnalyze">
+    <configuration name="BQBJ" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.edu.seu.wh.trend.concurrent.deadlock.BQBJ" />
       <module name="concurrent" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.edu.seu.wh.trend.concurrent.synchronizedpack.*" />
+          <option name="PATTERN" value="cn.edu.seu.wh.trend.concurrent.deadlock.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -73,12 +74,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MonitorDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.edu.seu.wh.trend.concurrent.synchronizedpack.MonitorDemo" />
+    <configuration name="ConditionAnalyze" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.edu.seu.wh.trend.concurrent.conditiion.ConditionAnalyze" />
       <module name="concurrent" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.edu.seu.wh.trend.concurrent.synchronizedpack.*" />
+          <option name="PATTERN" value="cn.edu.seu.wh.trend.concurrent.conditiion.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -86,12 +87,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Signleton" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.edu.seu.wh.trend.concurrent.volatilepack.Signleton" />
+    <configuration name="Hello" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.edu.seu.wh.trend.concurrent.deadlock.Hello" />
       <module name="concurrent" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.edu.seu.wh.trend.concurrent.volatilepack.*" />
+          <option name="PATTERN" value="cn.edu.seu.wh.trend.concurrent.deadlock.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -99,12 +100,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VolatileDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.edu.seu.wh.trend.concurrent.volatilepack.VolatileDemo" />
+    <configuration name="RegexTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.edu.seu.wh.trend.script.RegexTest" />
       <module name="concurrent" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.edu.seu.wh.trend.concurrent.volatilepack.*" />
+          <option name="PATTERN" value="cn.edu.seu.wh.trend.script.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -112,12 +113,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VolatileDemoInc" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.edu.seu.wh.trend.concurrent.volatilepack.VolatileDemoInc" />
+    <configuration name="TestBif" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.edu.seu.wh.trend.concurrent.deadlock.TestBif" />
       <module name="concurrent" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.edu.seu.wh.trend.concurrent.volatilepack.*" />
+          <option name="PATTERN" value="cn.edu.seu.wh.trend.concurrent.deadlock.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -127,11 +128,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Signleton" />
-        <item itemvalue="Application.VolatileDemoInc" />
-        <item itemvalue="Application.VolatileDemo" />
-        <item itemvalue="Application.CASCounter" />
-        <item itemvalue="Application.MonitorDemo" />
+        <item itemvalue="Application.ConditionAnalyze" />
+        <item itemvalue="Application.RegexTest" />
+        <item itemvalue="Application.BQBJ" />
+        <item itemvalue="Application.Hello" />
+        <item itemvalue="Application.TestBif" />
       </list>
     </recent_temporary>
   </component>
@@ -148,7 +149,19 @@
       <workItem from="1568958469957" duration="4752000" />
       <workItem from="1568965433704" duration="4505000" />
       <workItem from="1568970375923" duration="9764000" />
-      <workItem from="1569395068001" duration="1087000" />
+      <workItem from="1569395068001" duration="6421000" />
+      <workItem from="1569736383128" duration="2819000" />
+      <workItem from="1570497206814" duration="130000" />
+      <workItem from="1571368536691" duration="1259000" />
+      <workItem from="1571729342772" duration="28000" />
+      <workItem from="1571795048780" duration="955000" />
+      <workItem from="1571796050336" duration="12000" />
+      <workItem from="1571800241503" duration="573000" />
+      <workItem from="1571801315979" duration="13000" />
+      <workItem from="1572227039241" duration="6680000" />
+      <workItem from="1572255028759" duration="4765000" />
+      <workItem from="1572419577441" duration="63000" />
+      <workItem from="1572849495614" duration="646000" />
     </task>
     <servers />
   </component>
