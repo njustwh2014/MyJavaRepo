@@ -20,6 +20,8 @@ import java.util.regex.Pattern;
  * @create:2019-10-28 13:55
  **/
 public class RegexTest {
+
+
     public boolean isNumeric(char[] str) {
         String pattern="[+-]?\\d*(?:\\.\\d*)?(?:[Ee][+-]?\\d+)?$";
         String s=new String(str);
